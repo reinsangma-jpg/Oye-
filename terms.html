@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions - MoneyFlow</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .terms-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .terms-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: slideUp 0.6s ease;
+        }
+
+        .terms-header h1 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .terms-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .terms-content {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            line-height: 1.8;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .terms-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .terms-section h2 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-icon {
+            font-size: 2rem;
+        }
+
+        .terms-section p {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .terms-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .terms-section li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-primary);
+        }
+
+        .terms-section li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-left: 4px solid #667eea;
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .last-updated {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            transition: all var(--transition-normal);
+            margin-bottom: 2rem;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">💰</span>
+                <span class="logo-text">MoneyFlow</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Dashboard</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="terms.html" class="nav-link active">Terms</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="terms-container">
+            <a href="index.html" class="back-btn">← Back to Dashboard</a>
+
+            <div class="terms-header">
+                <h1>Terms & Conditions</h1>
+                <p>Please read these terms carefully before using MoneyFlow</p>
+            </div>
+
+            <div class="terms-content">
+                <div class="terms-section">
+                    <h2><span class="section-icon">📋</span> Purpose of Application</h2>
+                    <p>MoneyFlow is a personal finance tracking application designed to help individuals manage their income, expenses, and assets. This application is intended for personal use only and serves as a tool for financial record-keeping and planning.</p>
+                    
+                    <div class="highlight-box">
+                        <p><strong>Important:</strong> This application is for personal financial tracking only and should not be used for commercial or business accounting purposes.</p>
+                    </div>
+                </div>
+
+                <div class="terms-section">
+                    <h2><span class="section-icon">💾</span> Data Storage & Privacy</h2>
+                    <p>Your financial data is stored locally on your device using browser local storage. This means:</p>
+                    <ul>
+                        <li>All data remains on your device and is never transmitted to external servers</li>
+                        <li>No third parties have access to your financial information</li>
+                        <li>You maintain complete control over your data</li>
+                        <li>Clearing browser data will permanently delete all stored information</li>
+                        <li>We recommend regular backups of your financial data</li>
+                    </ul>
+                </div>
+
+                <div class="terms-section">
+                    <h2><span class="section-icon">⚠️</span> No Financial Advice</h2>
+                    <p>MoneyFlow is a tracking tool only. Please understand:</p>
+                    <ul>
+                        <li>This application does not provide financial advice or recommendations</li>
+                        <li>Interest calculations are estimates based on standard rates</li>
+                        <li>Projected growth figures are illustrative only</li>
+                        <li>Always consult qualified financial advisors for investment decisions</li>
+                        <li>Past performance does not guarantee future results</li>
+                    </ul>
+                    
+                    <div class="highlight-box">
+                        <p><strong>Disclaimer:</strong> MoneyFlow and its developer are not responsible for any financial decisions made based on information tracked or displayed in this application.</p>
+                    </div>
+                </div>
+
+                <div class="terms-section">
+                    <h2><span class="section-icon">✅</span> User Responsibility</h2>
+                    <p>By using MoneyFlow, you acknowledge that:</p>
+                    <ul>
+                        <li>You are responsible for the accuracy of data entered</li>
+                        <li>You are responsible for all financial decisions</li>
+                        <li>You will maintain backups of important financial records</li>
+                        <li>You understand the limitations of automated calculations</li>
+                        <li>You will use the application ethically and lawfully</li>
+                    </ul>
+                </div>
+
+                <div class="terms-section">
+                    <h2><span class="section-icon">🔒</span> Security Recommendations</h2>
+                    <p>To protect your financial information:</p>
+                    <ul>
+                        <li>Do not access the application on public or shared devices</li>
+                        <li>Keep your device secure with passwords or biometric locks</li>
+                        <li>Regularly export and backup your financial data</li>
+                        <li>Clear browser data when using shared computers</li>
+                        <li>Be cautious when sharing screenshots or data exports</li>
+                    </ul>
+                </div>
+
+                <div class="terms-section">
+                    <h2><span class="section-icon">🔄</span> Updates & Modifications</h2>
+                    <p>The developer reserves the right to:</p>
+                    <ul>
+                        <li>Update features and functionality</li>
+                        <li>Modify interest calculation methods</li>
+                        <li>Change the user interface design</li>
+                        <li>Discontinue the application with notice</li>
+                    </ul>
+                </div>
+
+                <div class="terms-section">
+                    <h2><span class="section-icon">💡</span> Limitation of Liability</h2>
+                    <p>MoneyFlow is provided "as is" without any warranties. The developer is not liable for:</p>
+                    <ul>
+                        <li>Data loss due to browser issues or device problems</li>
+                        <li>Financial decisions made using application data</li>
+                        <li>Calculation errors or inaccuracies</li>
+                        <li>Compatibility issues with devices or browsers</li>
+                        <li>Any direct or indirect damages arising from use</li>
+                    </ul>
+                </div>
+
+                <div class="terms-section">
+                    <h2><span class="section-icon">📧</span> Contact & Support</h2>
+                    <p>For questions, feedback, or issues regarding MoneyFlow, please contact the developer through the About page. While we strive to address concerns, support is provided on a best-effort basis.</p>
+                </div>
+
+                <div class="terms-section">
+                    <h2><span class="section-icon">✨</span> Acceptance of Terms</h2>
+                    <p>By using MoneyFlow, you acknowledge that you have read, understood, and agree to these Terms and Conditions. If you do not agree, please discontinue use of the application.</p>
+                </div>
+
+                <div class="last-updated">
+                    <p>Last Updated: March 2026</p>
+                    <p>© 2026 MoneyFlow - Developed by Reinhard Son Sangma</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.querySelector('.theme-icon');
+        const savedTheme = localStorage.getItem('theme') || 'light';
+
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeIcon.textContent = '☀️';
+            } else {
+                document.body.classList.remove('dark-mode');
+                themeIcon.textContent = '🌙';
+            }
+        }
+
+        applyTheme(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            applyTheme(newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    </script>
+</body>
+</html>

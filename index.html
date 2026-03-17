@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoneyFlow - Personal Finance Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">💰</span>
+                <span class="logo-text">MoneyFlow</span>
+            </div>
+            <div class="nav-links">
+                <a href="#dashboard" class="nav-link active">Dashboard</a>
+                <a href="#income" class="nav-link">Transactions</a>
+                <a href="#assets" class="nav-link">Assets</a>
+                <a href="about.html" class="nav-link">About</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <button class="btn-primary" id="addTransactionBtn">+ Add Transaction</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section active">
+            <div class="container">
+                <div class="section-header">
+                    <h1 class="section-title">Financial Overview</h1>
+                    <p class="section-subtitle">Track your money, grow your wealth</p>
+                </div>
+
+                <!-- Summary Cards -->
+                <div class="cards-grid">
+                    <div class="stat-card balance-card">
+                        <div class="card-icon">💵</div>
+                        <div class="card-content">
+                            <h3 class="card-label">Available Balance</h3>
+                            <p class="card-value" id="totalBalance">₹0</p>
+                            <span class="card-trend positive" id="balanceTrend">+0%</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card income-card">
+                        <div class="card-icon">📈</div>
+                        <div class="card-content">
+                            <h3 class="card-label">Monthly Income</h3>
+                            <p class="card-value" id="monthlyIncome">₹0</p>
+                            <span class="card-trend positive" id="incomeTrend">+0%</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card expense-card">
+                        <div class="card-icon">💸</div>
+                        <div class="card-content">
+                            <h3 class="card-label">Monthly Expenses</h3>
+                            <p class="card-value" id="monthlyExpenses">₹0</p>
+                            <span class="card-trend negative" id="expenseTrend">-0%</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card networth-card">
+                        <div class="card-icon">💎</div>
+                        <div class="card-content">
+                            <h3 class="card-label">Total Net Worth</h3>
+                            <p class="card-value" id="totalNetWorth">₹0</p>
+                            <span class="card-trend positive" id="networthTrend">+0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Row -->
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <h3 class="chart-title">Income vs Expenses</h3>
+                        <canvas id="incomeExpenseChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3 class="chart-title">Balance Trend</h3>
+                        <canvas id="balanceTrendChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Recent Transactions -->
+                <div class="recent-transactions">
+                    <div class="section-header-small">
+                        <h2>Recent Transactions</h2>
+                        <button class="btn-secondary" id="viewAllTransactions">View All</button>
+                    </div>
+                    <div class="transactions-list" id="recentTransactionsList">
+                        <!-- Transactions will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Income/Expense Tracker Section -->
+        <section id="income" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1 class="section-title">Transaction Manager</h1>
+                    <p class="section-subtitle">Track all your income and expenses</p>
+                </div>
+
+                <!-- Filter Bar -->
+                <div class="filter-bar">
+                    <div class="filter-group">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="income">Income</button>
+                        <button class="filter-btn" data-filter="expense">Expenses</button>
+                    </div>
+                    <div class="filter-controls">
+                        <input type="month" class="date-filter" id="monthFilter">
+                        <button class="btn-secondary" id="exportData">📊 Export</button>
+                    </div>
+                </div>
+
+                <!-- Transactions Table -->
+                <div class="table-card">
+                    <table class="transactions-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Type</th>
+                                <th>Amount</th>
+                                <th>Notes</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionsTableBody">
+                            <!-- Transactions will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Assets Section -->
+        <section id="assets" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1 class="section-title">Asset Portfolio</h1>
+                    <p class="section-subtitle">Manage and grow your wealth</p>
+                </div>
+
+                <!-- Asset Cards -->
+                <div class="assets-grid">
+                    <div class="asset-card bank-card">
+                        <div class="asset-header">
+                            <span class="asset-icon">🏦</span>
+                            <h3>Bank Account</h3>
+                        </div>
+                        <div class="asset-value" id="bankBalance">₹0</div>
+                        <div class="asset-detail">Interest: 2.5% p.a.</div>
+                        <button class="btn-asset" data-asset="bank">Update</button>
+                    </div>
+
+                    <div class="asset-card demat-card">
+                        <div class="asset-header">
+                            <span class="asset-icon">📊</span>
+                            <h3>Demat Account</h3>
+                        </div>
+                        <div class="asset-value" id="dematBalance">₹0</div>
+                        <div class="asset-detail">Investments</div>
+                        <button class="btn-asset" data-asset="demat">Update</button>
+                    </div>
+
+                    <div class="asset-card fd-card">
+                        <div class="asset-header">
+                            <span class="asset-icon">🔒</span>
+                            <h3>Fixed Deposits</h3>
+                        </div>
+                        <div class="asset-value" id="fdBalance">₹0</div>
+                        <div class="asset-detail">Interest: 7% p.a.</div>
+                        <button class="btn-asset" data-asset="fd">Update</button>
+                    </div>
+
+                    <div class="asset-card insurance-card">
+                        <div class="asset-header">
+                            <span class="asset-icon">🛡️</span>
+                            <h3>Insurance</h3>
+                        </div>
+                        <div class="asset-value" id="insuranceBalance">₹0</div>
+                        <div class="asset-detail">Total Coverage</div>
+                        <button class="btn-asset" data-asset="insurance">Update</button>
+                    </div>
+                </div>
+
+                <!-- Asset Distribution Chart -->
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <h3 class="chart-title">Asset Distribution</h3>
+                        <canvas id="assetDistributionChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3 class="chart-title">Projected Growth (5 Years)</h3>
+                        <canvas id="projectedGrowthChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Add Transaction Modal -->
+    <div class="modal" id="transactionModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add Transaction</h2>
+                <button class="modal-close" id="closeModal">×</button>
+            </div>
+            <form id="transactionForm">
+                <div class="form-group">
+                    <label>Type</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="type" value="income" checked>
+                            <span class="radio-custom income">Income</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="type" value="expense">
+                            <span class="radio-custom expense">Expense</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount (₹)</label>
+                    <input type="number" id="amount" name="amount" required min="0" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="notes">Notes</label>
+                    <textarea id="notes" name="notes" rows="3" placeholder="Add a description..."></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancelTransaction">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Transaction</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Update Asset Modal -->
+    <div class="modal" id="assetModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="assetModalTitle">Update Asset</h2>
+                <button class="modal-close" id="closeAssetModal">×</button>
+            </div>
+            <form id="assetForm">
+                <input type="hidden" id="assetType" name="assetType">
+                <div class="form-group">
+                    <label for="assetAmount">Current Value (₹)</label>
+                    <input type="number" id="assetAmount" name="assetAmount" required min="0" step="0.01">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancelAsset">Cancel</button>
+                    <button type="submit" class="btn-primary">Update Asset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="dashboard.js"></script>
+    <script src="income-tracker.js"></script>
+    <script src="asset-tracker.js"></script>
+    <script src="interest-calculator.js"></script>
+    <script src="charts.js"></script>
+</body>
+</html>
